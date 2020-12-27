@@ -3,6 +3,8 @@ package org.kodluyoruz;
 public class Queue<T>
 {
     Node currentNode;
+    Node first;
+    Node last;
 
     public void add(T t)
     {
@@ -37,18 +39,17 @@ public class Queue<T>
 
     public void pull(T t)
     {
-        while(currentNode.back != null)
+        Node nodeToCheck = new Node();
+
+        if(currentNode != null)
         {
-            if(currentNode.equals(t))
+            nodeToCheck = currentNode;
+            while(!nodeToCheck.equals(t))
             {
-                System.out.println(currentNode);
-                currentNode.front.t = currentNode.back.t;
+                nodeToCheck = nodeToCheck.back;
             }
-            else
-            {
-                System.out.println("I cant pull.");
-                break;
-            }
+            System.out.println(nodeToCheck);
+            nodeToCheck.front.t = nodeToCheck.back.t;
         }
     }
 }

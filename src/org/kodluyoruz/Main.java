@@ -12,7 +12,15 @@ public class Main {
 
         simitci.add(yas);
         simitci.add(isim);
+        simitci.add(isim);
+        simitci.add(isim);
+        simitci.add(yas);
+        simitci.add(yas);
+        simitci.add(isim);
+        simitci.add(isim);
 
-        simitci.pull(yas);
+        System.out.println(simitci.peak());
+        System.out.println(simitci.poll());
+        System.out.println(simitci.poll());
     }
 }

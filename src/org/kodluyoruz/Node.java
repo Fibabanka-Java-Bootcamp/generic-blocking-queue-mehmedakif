@@ -3,8 +3,8 @@ package org.kodluyoruz;
 public class Node<T>
 {
 
-    T t;
-    Node front;
-    Node back;
+    T value;
+    public Node<T> front;
+    public Node<T> back;
 
 }

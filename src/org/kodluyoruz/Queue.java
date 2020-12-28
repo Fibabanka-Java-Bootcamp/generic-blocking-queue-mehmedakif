@@ -2,54 +2,44 @@ package org.kodluyoruz;
 
 public class Queue<T>
 {
-    Node currentNode;
-    Node first;
-    Node last;
+    Node<T> head;
+    Node<T> tail;
 
     public void add(T t)
     {
-        Node newNode = new Node();
-        newNode.t = t;
-        if(currentNode == null)
+        Node<T> newNode = new Node<>();
+        newNode.value = t;
+        if(head == null)
         {
-            this.currentNode = newNode;
+            this.head = newNode;
+            this.tail = newNode;
         }
         else
             {
-               this.currentNode.back = currentNode;
+                this.tail.back = newNode;
+               this.tail = this.tail.back;
             }
 
     }
 
-    public void peak(T t)
+    public Node<T> peak()
     {
-        while(currentNode.back != null)
+        if(head != null)
         {
-            if(currentNode.back.equals(t))
-            {
-                System.out.println(currentNode);
-            }
-            else
-            {
-                System.out.println("Bu nesne yok.");
-                break;
-            }
+            return this.head;
         }
+        return null;
     }
 
-    public void pull(T t)
+    public Node<T> poll()
     {
-        Node nodeToCheck = new Node();
-
-        if(currentNode != null)
+        Node<T> nodeToPrint;
+        if(head != null)
         {
-            nodeToCheck = currentNode;
-            while(!nodeToCheck.equals(t))
-            {
-                nodeToCheck = nodeToCheck.back;
-            }
-            System.out.println(nodeToCheck);
-            nodeToCheck.front.t = nodeToCheck.back.t;
+            nodeToPrint = head;
+            head = head.back;
+            return nodeToPrint;
         }
+        return null;
     }
 }
